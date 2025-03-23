@@ -39,6 +39,9 @@ function game() {
         p1.classList.remove("shake");
         p2.classList.remove("shake");
 
+        // Reset previous animations
+        winner.classList.remove("winner-text");
+
         // Decide winner
         if (p1score > p2score) {
             winner.textContent = 'Player 1 Wins 🚩';
@@ -53,7 +56,10 @@ function game() {
         } else {
             winner.textContent = 'DRAW';
         }
-    }, 500); // Shake animation lasts 0.5s, so wait before deciding winner
+
+        // Apply animation to the winner text
+        winner.classList.add("winner-text");
+    }, 500); // Wait for shake animation to finish
 }
 
 function generateImg1() {
