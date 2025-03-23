@@ -8,6 +8,8 @@ let p2score;
 p1.addEventListener("click", function() {
     p1score = diceRoll();
     p2score = diceRoll();
+    let roll = new Audio('sounds/dice.mp3');
+    roll.play();
     game();
     generateImg1();
     generateImg2();
@@ -16,6 +18,8 @@ p1.addEventListener("click", function() {
 p2.addEventListener("click", function() {
     p1score = diceRoll();
     p2score = diceRoll();
+    let roll = new Audio('sounds/dice.mp3');
+    roll.play();
     game();
     generateImg1();
     generateImg2();
