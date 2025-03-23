@@ -53,7 +53,6 @@ function game() {
             winner.classList.add("winner-text");
         } else if (p2score > p1score) {
             winner.textContent = 'Player 2 Wins 🚩';
-            p1.classList.add("loser");
             p2.classList.add("winner");
             //remove winner class incase it was still applied
             p1.classList.remove("winner");
@@ -61,6 +60,8 @@ function game() {
             winner.classList.add("winner-text");
         } else {
             winner.textContent = 'DRAW';
+            p1.classList.remove("winner");
+            p2.classList.remove("winner");
         }
         
     }, 500); // Wait for shake animation to finish
