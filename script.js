@@ -39,26 +39,30 @@ function game() {
         p1.classList.remove("shake");
         p2.classList.remove("shake");
 
-        // Reset previous animations
+        // Remove previous animation so it can replay
         winner.classList.remove("winner-text");
+        void winner.offsetWidth; // Trick to restart animation
 
         // Decide winner
         if (p1score > p2score) {
             winner.textContent = 'Player 1 Wins 🚩';
             p1.classList.add("winner");
-            p2.classList.add("loser");
+            //remove winner class incase it was still applied
             p2.classList.remove("winner");
+            // Apply animation to the winner text
+            winner.classList.add("winner-text");
         } else if (p2score > p1score) {
             winner.textContent = 'Player 2 Wins 🚩';
             p1.classList.add("loser");
             p2.classList.add("winner");
+            //remove winner class incase it was still applied
             p1.classList.remove("winner");
+            // Apply animation to the winner text
+            winner.classList.add("winner-text");
         } else {
             winner.textContent = 'DRAW';
         }
-
-        // Apply animation to the winner text
-        winner.classList.add("winner-text");
+        
     }, 500); // Wait for shake animation to finish
 }
 
