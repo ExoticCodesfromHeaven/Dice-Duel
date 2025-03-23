@@ -30,13 +30,30 @@ function diceRoll() {
 }
 
 function game() {
-    if (p1score > p2score) {
-        winner.textContent = 'Player 1 Wins 🚩'
-    } else if (p2score > p1score) {
-        winner.textContent = 'Player 2 Wins 🚩'
-    } else if (p1score === p2score) {
-        winner.textContent = 'DRAW'
-    }
+    // Add shake class to both dice
+    p1.classList.add("shake");
+    p2.classList.add("shake");
+
+    setTimeout(() => {
+        // Remove shake class after animation completes
+        p1.classList.remove("shake");
+        p2.classList.remove("shake");
+
+        // Decide winner
+        if (p1score > p2score) {
+            winner.textContent = 'Player 1 Wins 🚩';
+            p1.classList.add("winner");
+            p2.classList.add("loser");
+            p2.classList.remove("winner");
+        } else if (p2score > p1score) {
+            winner.textContent = 'Player 2 Wins 🚩';
+            p1.classList.add("loser");
+            p2.classList.add("winner");
+            p1.classList.remove("winner");
+        } else {
+            winner.textContent = 'DRAW';
+        }
+    }, 500); // Shake animation lasts 0.5s, so wait before deciding winner
 }
 
 function generateImg1() {
@@ -75,6 +92,9 @@ function refreshGame() {
     winner.textContent = 'Click the Dice';
     p1.setAttribute("src", "./images/dice6.png");
     p2.setAttribute("src", "./images/dice6.png");
+    // Reset winner effect
+    p1.classList.remove("winner");
+    p2.classList.remove("winner");
     p1score;
     p2score;
 }
